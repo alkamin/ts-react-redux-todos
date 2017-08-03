@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  background: #f5f8fa;
+}
+.app-container {
+  height: 100vh;
+  width: 1000px;
+  margin: 0 auto;
+  padding: 36px;
+}
+
+.list-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.list-header h1,
+.list-header h2 {
+  flex: 1;
+}
+
+:focus {
+  outline: none !important;
+}

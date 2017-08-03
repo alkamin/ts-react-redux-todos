@@ -1,0 +1,34 @@
+.todo-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 42px;
+}
+
+.todo-list-header div {
+    background: #fff;
+    display: inline-block;
+    margin-bottom: -16px;
+}
+
+.todo-item {
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+}
+.todo-item:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+}
+
+.todo-item .pt-control {
+    margin-bottom: 0;
+}
+
+.todo-item .todo-content {
+    flex: 1;
+    padding: 12px;
+}
+
+.todo-item .todo-complete {
+    text-decoration: line-through;
+}
