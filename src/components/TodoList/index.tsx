@@ -1,7 +1,9 @@
 import * as React from 'react';
 
 import {
-    NonIdealState
+    Button,
+    NonIdealState,
+    Tag
 } from '@blueprintjs/core';
 
 import Todo from '../../types/Todo';
@@ -15,19 +17,25 @@ export interface props {
     todos: Todo[],
     onTodoCreate: (todo: Todo) => actions.TodoAction,
     onTodoEdit: (todo: Todo) => actions.TodoAction,
-    onTodoDelete: (todo: Todo) => actions.TodoAction
+    onTodoDelete: (todo: Todo) => actions.TodoAction,
+    onDeleteCompleteTodos: () => actions.TodoAction
 }
 
-export default function TodoList ({ todos, onTodoEdit, onTodoCreate, onTodoDelete }:props) {
+export default function TodoList ({
+    todos, onTodoEdit, onTodoCreate, onTodoDelete, onDeleteCompleteTodos
+}:props) {
     function createEmptyTodo() {
         const timestamp = Date.now();
         const todo = {
-            content: 'This is an empty todo',
+            content: '',
             createdAt: timestamp,
             complete: false,
             pinned: false
         };
         onTodoCreate(todo);
+    }
+    function deleteCompleteTodos() {
+        onDeleteCompleteTodos();
     }
     function renderTodos(predicate: (t:Todo) => boolean, name: string = '') {
         const filteredTodos: Todo[] = todos.filter(predicate);
@@ -38,10 +46,16 @@ export default function TodoList ({ todos, onTodoEdit, onTodoCreate, onTodoDelet
         }
         return (
             <NonIdealState
+                className="empty-list-placeholder"
                 description={`There aren't any ${name} todos yet`}
             />
         )
     }
+
+    function countTodos(predicate: (t:Todo) => boolean) {
+        return todos.filter(predicate).length;
+    }
+
     function renderTodo(t:Todo) {
         return (
             <TodoComponent
@@ -65,17 +79,33 @@ export default function TodoList ({ todos, onTodoEdit, onTodoCreate, onTodoDelet
         <div>
             <div className="list-header">
                 <h2></h2>
+                <Button
+                    iconName="delete"
+                    className="pt-intent-danger"
+                    text="Remove complete todos"
+                    onClick={deleteCompleteTodos}
+                />
                 <NewTodoButton
                     onClick={createEmptyTodo}
                 />
             </div>
-            <h6 className="todo-list-header">Pinned Todos</h6>
-            <ul className="todo-list pt-card pt-elevation-3">
-                { renderTodos(t => t.pinned, 'pinned') }
-            </ul>
-            <h6 className="todo-list-header">Other Todos</h6>
+            <div className="todo-list-header">
+                <Tag className="pt-minimal">
+                    {countTodos(t => t.pinned)}
+                </Tag>
+                <h6>Pinned Todos</h6>
+            </div>
             <ul className="todo-list pt-card pt-elevation-2">
-                { renderTodos(t => !t.pinned) }
+                {renderTodos(t => t.pinned, 'pinned')}
+            </ul>
+            <div className="todo-list-header">
+                <Tag className="pt-minimal">
+                    {countTodos(t => !t.pinned)}
+                </Tag>
+                <h6>Other Todos</h6>
+            </div>
+            <ul className="todo-list pt-card pt-elevation-1">
+                {renderTodos(t => !t.pinned)}
             </ul>
         </div>
     )

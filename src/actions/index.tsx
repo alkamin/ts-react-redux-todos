@@ -16,10 +16,15 @@ export interface DeleteTodo {
     todo: Todo;
 }
 
+export interface DeleteCompleteTodos {
+    type: constants.DELETE_COMPLETE_TODOS
+}
+
 export type TodoAction =
     CreateTodo |
     EditTodo |
-    DeleteTodo
+    DeleteTodo |
+    DeleteCompleteTodos
 
 export function createTodo(todo:Todo): CreateTodo {
     return {
@@ -39,5 +44,11 @@ export function deleteTodo(todo:Todo): DeleteTodo {
     return {
         type: constants.DELETE_TODO,
         todo
+    };
+}
+
+export function deleteCompleteTodos(): DeleteCompleteTodos {
+    return {
+        type: constants.DELETE_COMPLETE_TODOS
     };
 }

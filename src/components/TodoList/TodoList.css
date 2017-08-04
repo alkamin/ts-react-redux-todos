@@ -1,14 +1,26 @@
+.list-header button {
+    margin-left: 12px;
+}
 .todo-list {
     margin: 0;
-    padding: 0;
+    padding: 0 !important;
     list-style: none;
     margin-bottom: 42px;
 }
 
-.todo-list-header div {
-    background: #fff;
-    display: inline-block;
-    margin-bottom: -16px;
+.todo-list .empty-list-placeholder {
+    padding: 8px 16px;
+}
+
+.todo-list-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.todo-list-header h6 {
+    margin: 0;
+    margin-left: 12px;
 }
 
 .todo-item {

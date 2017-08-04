@@ -15,7 +15,8 @@ export function mapDispatchToProps(dispatch: Dispatch<actions.TodoAction>) {
   return {
     onTodoCreate: (todo: Todo) => dispatch(actions.createTodo(todo)),
     onTodoEdit: (todo: Todo) => dispatch(actions.editTodo(todo)),
-    onTodoDelete: (todo: Todo) => dispatch(actions.deleteTodo(todo))
+    onTodoDelete: (todo: Todo) => dispatch(actions.deleteTodo(todo)),
+    onDeleteCompleteTodos: () => dispatch(actions.deleteCompleteTodos())
   };
 }
 

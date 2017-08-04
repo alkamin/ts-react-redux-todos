@@ -3,7 +3,8 @@ import StoreState from '../types/StoreState';
 import {
     CREATE_TODO,
     EDIT_TODO,
-    DELETE_TODO
+    DELETE_TODO,
+    DELETE_COMPLETE_TODOS
 } from '../constants/index';
 
 export function todo(state: StoreState, action: TodoAction): StoreState {
@@ -32,6 +33,11 @@ export function todo(state: StoreState, action: TodoAction): StoreState {
                     ...state.todos.slice(j + 1, state.todos.length)
                 ]
             };
+        case DELETE_COMPLETE_TODOS:
+            return {
+                ...state,
+                todos: state.todos.filter(t => !t.complete)
+            }
         default:
             return state;
     }
