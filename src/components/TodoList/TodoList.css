@@ -18,7 +18,7 @@
     margin-bottom: 12px;
 }
 
-.todo-list-header h6 {
+.todo-list-header > * {
     margin: 0;
     margin-left: 12px;
 }
@@ -36,11 +36,16 @@
     margin-bottom: 0;
 }
 
+.todo-item.todo-complete {
+    background: #EBF1F5;
+}
+
 .todo-item .todo-content {
     flex: 1;
     padding: 12px;
 }
 
-.todo-item .todo-complete {
+.todo-item.todo-complete .todo-content{
     text-decoration: line-through;
+    color: #8A9BA8;
 }

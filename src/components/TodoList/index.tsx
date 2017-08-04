@@ -78,7 +78,7 @@ export default function TodoList ({
     return (
         <div>
             <div className="list-header">
-                <h2></h2>
+                <h2/>
                 <Button
                     iconName="delete"
                     className="pt-intent-danger"

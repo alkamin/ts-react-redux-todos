@@ -43,12 +43,12 @@ function TodoComponent ({ todo, onEdit, onDelete }:props) {
         return 'pt-icon-pin';
     }
     return (
-        <li className="pt-ui-text-large todo-item">
+        <li className={`pt-ui-text-large todo-item ${classNames()}`}>
             <Checkbox checked={ todo.complete }
                       className="pt-large"
                       onChange={ toggleTodo }
             />
-            <EditableText className={`todo-content ${classNames()}`}
+            <EditableText className={`todo-content`}
                           defaultValue={ todo.content }
                           onConfirm={ editContent }
                           selectAllOnFocus = { true }
