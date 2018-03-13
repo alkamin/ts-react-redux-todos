@@ -15,6 +15,7 @@
         ],
         "curly": true,
         "eofline": false,
+        "experimentalDecorators": true,
         "forin": true,
         "indent": [ true, "spaces" ],
         "interface-name": [true, "never-prefix"],

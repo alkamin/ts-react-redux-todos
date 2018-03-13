@@ -17,30 +17,30 @@ export interface DeleteTodo {
 }
 
 export interface DeleteCompleteTodos {
-    type: constants.DELETE_COMPLETE_TODOS
+    type: constants.DELETE_COMPLETE_TODOS;
 }
 
 export type TodoAction =
     CreateTodo |
     EditTodo |
     DeleteTodo |
-    DeleteCompleteTodos
+    DeleteCompleteTodos;
 
-export function createTodo(todo:Todo): CreateTodo {
+export function createTodo(todo: Todo): CreateTodo {
     return {
         type: constants.CREATE_TODO,
         todo
     };
 }
 
-export function editTodo(todo:Todo): EditTodo {
+export function editTodo(todo: Todo): EditTodo {
     return {
         type: constants.EDIT_TODO,
         todo
     };
 }
 
-export function deleteTodo(todo:Todo): DeleteTodo {
+export function deleteTodo(todo: Todo): DeleteTodo {
     return {
         type: constants.DELETE_TODO,
         todo

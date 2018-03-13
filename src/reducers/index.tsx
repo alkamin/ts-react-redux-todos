@@ -37,7 +37,7 @@ export function todo(state: StoreState, action: TodoAction): StoreState {
             return {
                 ...state,
                 todos: state.todos.filter(t => !t.complete)
-            }
+            };
         default:
             return state;
     }
