@@ -84,7 +84,9 @@ export default function TodoList ({
     return (
         <div>
             <div className="list-header">
-                <h2/>
+                <h6 className="text-light fill">
+                    {countTodos(t => t.complete)} tasks done, {countTodos(t => !t.complete)} tasks to go
+                </h6>
                 <Button
                     iconName="delete"
                     className="pt-intent-danger"
@@ -94,9 +96,6 @@ export default function TodoList ({
                 <NewTodoButton
                     onClick={createEmptyTodo}
                 />
-            </div>
-            <div className="todo-list-header light space-below">
-                <h6>{countTodos(t => t.complete)} tasks done, {countTodos(t => !t.complete)} tasks to go</h6>
             </div>
             <div className="todo-list-header">
                 <Tag className="pt-minimal">
