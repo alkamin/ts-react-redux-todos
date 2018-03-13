@@ -122,7 +122,7 @@ export default function TodoList ({
                 <h6>Completed Todos</h6>
             </div>
             <ul className="todo-list pt-card pt-elevation-1">
-                {renderTodos(t => !t.pinned && t.complete)}
+                {renderTodos(t => t.complete)}
             </ul>
         </div>
     );
