@@ -17,6 +17,13 @@
     align-items: center;
     margin-bottom: 12px;
 }
+.todo-list-header.light h6 {
+    font-weight: lighter;
+    /* font-style: italic; */
+}
+.todo-list-header.space-below {
+    margin-bottom: 24px;
+}
 
 .todo-list-header > * {
     margin: 0;
@@ -43,6 +50,12 @@
 .todo-item .todo-content {
     flex: 1;
     padding: 12px;
+}
+
+.todo-item .drag-handle {
+    color: #555;
+    cursor: grab;
+    margin-right: 1em;
 }
 
 .todo-item.todo-complete .todo-content{

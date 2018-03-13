@@ -3,8 +3,9 @@ import { autobind } from 'core-decorators';
 
 import {
     Button,
+    Checkbox,
     EditableText,
-    Checkbox
+    // Icon
 } from '@blueprintjs/core';
 
 import Todo from '../types/Todo';
@@ -93,6 +94,7 @@ class TodoComponent extends React.Component<TodoInterface> {
     render() {
         return (
             <li className={`pt-ui-text-large todo-item ${this.classNames()}`}>
+                {/* <Icon className="drag-handle" iconName="pt-icon-drag-handle-vertical"/> */}
                 <Checkbox
                     checked={this.todo.complete}
                     className="pt-large"

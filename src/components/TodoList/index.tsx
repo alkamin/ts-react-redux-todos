@@ -95,6 +95,9 @@ export default function TodoList ({
                     onClick={createEmptyTodo}
                 />
             </div>
+            <div className="todo-list-header light space-below">
+                <h6>{countTodos(t => t.complete)} tasks done, {countTodos(t => !t.complete)} tasks to go</h6>
+            </div>
             <div className="todo-list-header">
                 <Tag className="pt-minimal">
                     {countTodos(t => t.pinned && !t.complete)}
