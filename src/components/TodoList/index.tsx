@@ -117,7 +117,7 @@ export default function TodoList ({
             </ul>
             <div className="todo-list-header">
                 <Tag className="pt-minimal">
-                    {countTodos(t => !t.pinned && t.complete)}
+                    {countTodos(t => t.complete)}
                 </Tag>
                 <h6>Completed Todos</h6>
             </div>
