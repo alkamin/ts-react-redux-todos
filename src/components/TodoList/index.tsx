@@ -3,7 +3,8 @@ import * as React from 'react';
 import {
     Button,
     NonIdealState,
-    Tag
+    Tag,
+    Navbar
 } from '@blueprintjs/core';
 
 import Todo from '../../types/Todo';
@@ -83,47 +84,56 @@ export default function TodoList ({
     }
     return (
         <div>
-            <div className="list-header">
-                <h6 className="text-light fill">
-                    {countTodos(t => t.complete)} tasks done, {countTodos(t => !t.complete)} tasks to go
-                </h6>
-                <Button
-                    iconName="delete"
-                    className="pt-intent-danger"
-                    text="Remove complete todos"
-                    onClick={deleteCompleteTodos}
-                />
-                <NewTodoButton
-                    onClick={createEmptyTodo}
-                />
+            <Navbar className="pt-fixed-top">
+                <Navbar.Group align="left">
+                    <Navbar.Heading className="text-light">
+                        <span className="text-normal">{countTodos(t => t.complete)}</span> tasks done, &nbsp;
+                        <span className="text-normal">{countTodos(t => !t.complete)}</span> tasks to go
+                    </Navbar.Heading>
+                </Navbar.Group>
+                <Navbar.Group
+                    align="right"
+                >
+                    <Button
+                        iconName="delete"
+                        className="pt-intent-danger"
+                        text="Remove complete todos"
+                        onClick={deleteCompleteTodos}
+                    />
+                    <NewTodoButton
+                        onClick={createEmptyTodo}
+                    />
+                </Navbar.Group>
+            </Navbar>
+            <div className="main-container">
+                <div className="todo-list-header">
+                    <Tag className="pt-minimal">
+                        {countTodos(t => t.pinned && !t.complete)}
+                    </Tag>
+                    <h6>Pinned Todos</h6>
+                </div>
+                <ul className="todo-list pt-card pt-elevation-2">
+                    {renderTodos(t => t.pinned && !t.complete, 'pinned')}
+                </ul>
+                <div className="todo-list-header">
+                    <Tag className="pt-minimal">
+                        {countTodos(t => !t.pinned && !t.complete)}
+                    </Tag>
+                    <h6>Other Todos</h6>
+                </div>
+                <ul className="todo-list pt-card pt-elevation-1">
+                    {renderTodos(t => !t.pinned && !t.complete)}
+                </ul>
+                <div className="todo-list-header">
+                    <Tag className="pt-minimal">
+                        {countTodos(t => t.complete)}
+                    </Tag>
+                    <h6>Completed Todos</h6>
+                </div>
+                <ul className="todo-list pt-card pt-elevation-1">
+                    {renderTodos(t => t.complete)}
+                </ul>
             </div>
-            <div className="todo-list-header">
-                <Tag className="pt-minimal">
-                    {countTodos(t => t.pinned && !t.complete)}
-                </Tag>
-                <h6>Pinned Todos</h6>
-            </div>
-            <ul className="todo-list pt-card pt-elevation-2">
-                {renderTodos(t => t.pinned && !t.complete, 'pinned')}
-            </ul>
-            <div className="todo-list-header">
-                <Tag className="pt-minimal">
-                    {countTodos(t => !t.pinned && !t.complete)}
-                </Tag>
-                <h6>Other Todos</h6>
-            </div>
-            <ul className="todo-list pt-card pt-elevation-1">
-                {renderTodos(t => !t.pinned && !t.complete)}
-            </ul>
-            <div className="todo-list-header">
-                <Tag className="pt-minimal">
-                    {countTodos(t => t.complete)}
-                </Tag>
-                <h6>Completed Todos</h6>
-            </div>
-            <ul className="todo-list pt-card pt-elevation-1">
-                {renderTodos(t => t.complete)}
-            </ul>
         </div>
     );
 }

@@ -1,4 +1,4 @@
-.list-header button {
+.pt-navbar button {
     margin-left: 12px;
 }
 .todo-list {
@@ -26,9 +26,8 @@
     font-weight: lighter;
 }
 
-.todo-list-header.light h6 {
-    font-weight: lighter;
-    /* font-style: italic; */
+.text-normal {
+    font-weight: normal;
 }
 
 .todo-list-header > * {
